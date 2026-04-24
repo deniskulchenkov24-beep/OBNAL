@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ОБНАЛ Авто — Продать</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/sell.css">
+</head>
+<body class="sell-page">
+  <header class="header">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">☰</span>
+      <span>ОБНАЛ</span>
+    </a>
+
+    <div class="search-btn" id="searchContainer">
+      <input type="text" class="search-input" id="searchInput" placeholder="Поиск...">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+    </div>
+
+    <nav class="nav-menu">
+      <ul class="nav-links">
+        <li><a href="buy.html">Купить</a></li>
+        <li><a href="sell.html" class="active">Продать</a></li>
+        <li><a href="service.html">Сервис</a></li>
+        <li><a href="about.html">О нас</a></li>
+      </ul>
+
+      <a href="#" class="support">
+        <svg class="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>Поддержка</span>
+      </a>
+
+      <a href="account.html" class="user-icon" title="Личный кабинет">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ОСНОВНОЕ СОДЕРЖИМОЕ СТРАНИЦЫ -->
+  <main class="page-main">
+    <!-- Форма для продажи автомобиля -->
+    <section class="hero-section sell-hero">
+      <div class="sell-form-wrapper">
+        <h2>Выкуп автомобилей с пробегом</h2>
+        <p>Поможем с быстрой продажей</p>
+        <form class="sell-form">
+          <input class="sell-input" type="text" placeholder="Госномер (А111АА11)" name="license" pattern="[А-Яа-я]\d{3}[А-Яа-я]{2}\d{2}" title="Формат: А111АА11" required>
+          <input class="sell-input" type="number" placeholder="Пробег, км" name="mileage" min="0" required>
+          <input class="sell-input" type="text" placeholder="Адрес" name="address" minlength="5" required>
+          <input class="sell-input" type="tel" placeholder="Номер для связи (+7...)" name="phone" pattern="\+7\d{10}" title="Формат: +7XXXXXXXXXX" required>
+          <button class="sell-submit" type="submit">Оставить заявку</button>
+        </form>
+      </div>
+
+      <div class="hero-image">
+        <img src="image/rs6.jpeg" alt="Здесь должна быть машина">
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <div class="footer-copyright">© 2026 ОБНАЛ Авто Все права защищены</div>
+        <div class="footer-founder">
+          Учредитель: Общество с ограниченной ответственностью «ОБНАЛ-Авто»<br>
+          Главный редактор: Кульченков Денис Сергеевич
+        </div>
+      </div>
+      <div class="footer-right">
+        <a href="terms.html">Пользовательское соглашение</a>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a class="social-icon" href="#" title="Наш ВКонтакте">VK</a>
+      <a class="social-icon" href="#" title="Наш Telegram">TG</a>
+    </div>
+  </footer>
+
+  <!-- ВСПЛЫВАЮЩЕЕ ОКНО ПОДДЕРЖКИ -->
+  <div class="support-popup" id="supportPopup">
+    <div class="support-popup-header">
+      <span>Поддержка</span>
+      <button type="button" class="support-close" id="supportClose">×</button>
+    </div>
+    <div class="support-popup-body">
+      <textarea id="supportMessage" placeholder="Напишите сообщение..."></textarea>
+      <button type="button" class="support-send" id="supportSend">Отправить</button>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО ВХОДА -->
+  <div class="login-modal-overlay" id="loginModalOverlay">
+    <div class="login-modal">
+      <button type="button" class="login-modal-close" id="loginModalClose">×</button>
+      
+      <div class="login-modal-logo">ОБНАЛ</div>
+      
+      <form class="login-form" id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="Введите ваш email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="Введите пароль" required>
+        </div>
+
+        <button type="submit" class="login-submit-btn">Sign In</button>
+
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </form>
+    </div>
+  </div>
+
+  <!-- УВЕДОМЛЕНИЕ ОБ УСПЕШНОЙ ОТПРАВКЕ ЗАЯВКИ -->
+  <div class="app-notification-overlay" id="appNotificationOverlay">
+    <div class="app-notification">
+      <div class="notification-icon">✓</div>
+      <h2>Заявку приняли</h2>
+      <p>Скоро с вами свяжется консультант</p>
+      <button type="button" class="notification-close-btn" id="notificationCloseBtn">Закрыть</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

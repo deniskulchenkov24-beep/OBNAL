@@ -1,0 +1,314 @@
+/* Sell Page Styles */
+/* ========== СТРАНИЦА ПРОДАЖИ АВТОМОБИЛЯ ========== */
+.sell-page {
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, rgba(155,20,229,0.16), transparent 28%), linear-gradient(135deg, #111111 0%, #181818 100%);
+    color: white;
+}
+
+.sell-page .header {
+    margin: 0;
+    background-color: #2a2a2a;
+}
+
+.sell-page > main {
+    padding: 40px 24px 60px;
+}
+
+/* Форма и изображение автомобиля */
+.sell-hero {
+    max-width: 1320px;
+    margin: 40px auto;
+    background: linear-gradient(135deg, #9B14E5 0%, #B214E5 90%);
+    border-radius: 36px;
+    padding: 36px;
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+    gap: 28px;
+    align-items: center;
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.35);
+}
+
+/* Контейнер с формой */
+.sell-form-wrapper {
+    background: white;
+    border-radius: 32px;
+    padding: 36px 32px;
+    max-width: 560px;
+    color: #111;
+}
+
+.sell-form-wrapper h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.sell-form-wrapper p {
+    margin-bottom: 28px;
+    color: #666;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* ФОРМА ПРОДАЖИ  */
+.sell-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sell-hero .sell-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* Поля ввода */
+.sell-input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: none;
+    background: #E7E7E7;
+    color: #333;
+    font-size: 15px;
+    outline: none;
+}
+
+.sell-hero .sell-input {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 24px;
+    border: none;
+    background: #E7E7E7;
+    color: #333;
+    font-size: 15px;
+    outline: none;
+}
+
+/* Кнопка отправки формы */
+.sell-submit {
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #9B14E5 0%, #ff00ff 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.sell-hero .sell-submit {
+    grid-column: span 2;
+    justify-self: center;
+    padding: 16px 40px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #9B14E5 0%, #ff00ff 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.sell-submit:hover {
+    transform: translateY(-2px);
+}
+
+.sell-hero .hero-image {
+    min-height: 420px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.sell-hero .hero-image .placeholder {
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.sell-footer {
+    max-width: 1320px;
+    margin: 40px auto 0;
+    background: linear-gradient(135deg, #9B14E5 0%, #ff00ff 100%);
+    border-radius: 30px;
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    color: white;
+}
+
+.sell-footer .footer-left {
+    max-width: 620px;
+}
+
+.sell-footer .footer-left p {
+    margin-bottom: 14px;
+    color: rgba(255,255,255,0.95);
+    line-height: 1.6;
+}
+
+.sell-footer .footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-end;
+}
+
+.sell-footer .footer-right a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.95;
+}
+
+.sell-footer .social-icons {
+    display: flex;
+    gap: 14px;
+}
+
+@media (max-width: 1200px) {
+    .sell-hero {
+        flex-direction: column;
+    }
+
+    .sell-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sell-footer .footer-right {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .sell-page .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .sell-page .search-block {
+        max-width: 100%;
+    }
+
+    .sell-page .nav-buttons {
+        gap: 10px;
+    }
+
+    .sell-hero {
+        grid-template-columns: 1fr;
+        padding: 24px;
+    }
+
+    .sell-form-wrapper {
+        padding: 20px;
+    }
+
+    .sell-form {
+        gap: 12px;
+    }
+
+    .sell-hero .hero-image {
+        min-height: 300px;
+    }
+
+    .sell-footer {
+        padding: 20px;
+        border-radius: 20px;
+    }
+}
+
+/* ========== УВЕДОМЛЕНИЕ ОБ УСПЕХЕ ========== */
+.app-notification-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10001;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-notification-overlay.active {
+    display: flex;
+}
+
+.app-notification {
+    background: white;
+    border-radius: 30px;
+    padding: 50px 40px;
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.notification-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #9B14E5 0%, #D414E5 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: white;
+    margin: 0 auto 25px;
+}
+
+.app-notification h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.app-notification p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.notification-close-btn {
+    padding: 14px 40px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #9B14E5 0%, #D414E5 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.notification-close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(155, 20, 229, 0.3);
+}

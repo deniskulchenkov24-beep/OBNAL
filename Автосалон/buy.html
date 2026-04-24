@@ -1,0 +1,654 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ОБНАЛ Авто — Купить</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/buy.css">
+</head>
+<body class="buy-page">
+  <header class="header">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">☰</span>
+      <span>ОБНАЛ</span>
+    </a>
+
+    <div class="search-btn" id="searchContainer">
+      <input type="text" class="search-input" id="searchInput" placeholder="Поиск...">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+    </div>
+
+    <nav class="nav-menu">
+      <ul class="nav-links">
+        <li><a href="buy.html" class="active">Купить</a></li>
+        <li><a href="sell.html">Продать</a></li>
+        <li><a href="service.html">Сервис</a></li>
+        <li><a href="about.html">О нас</a></li>
+      </ul>
+
+      <a href="#" class="support">
+        <svg class="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>Поддержка</span>
+      </a>
+
+      <a href="account.html" class="user-icon" title="Личный кабинет">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <aside class="page-sidebar">
+      <!-- ФИЛЬТРЫ -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-condition="new">Новые</button>
+        <button class="filter-tab" data-condition="used">С пробегом</button>
+        <button class="filter-tab" data-condition="all">Все</button>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-label">Марка</div>
+        <select class="filter-select" id="brandSelect">
+          <option value="">Выберите</option>
+          <option value="Mercedes-Benz">Mercedes-Benz</option>
+          <option value="BMW">BMW</option>
+          <option value="Porsche">Porsche</option>
+          <option value="Audi">Audi</option>
+          <option value="Volkswagen">Volkswagen</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Модель</div>
+        <select class="filter-select" id="modelSelect">
+          <option value="">Выберите</option>
+          <option value="C-Class 2024">C-Class 2024</option>
+          <option value="E-Class 2024">E-Class 2024</option>
+          <option value="S-Class 2024">S-Class 2024</option>
+          <option value="GLC 2024">GLC 2024</option>
+          <option value="GLE 2024">GLE 2024</option>
+          <option value="3 Series G20">3 Series G20</option>
+          <option value="5 Series G60">5 Series G60</option>
+          <option value="X3 G01">X3 G01</option>
+          <option value="X5 G05">X5 G05</option>
+          <option value="X7 G07">X7 G07</option>
+          <option value="911 Carrera">911 Carrera</option>
+          <option value="Cayenne 2024">Cayenne 2024</option>
+          <option value="Macan 2024">Macan 2024</option>
+          <option value="Panamera">Panamera</option>
+          <option value="Taycan">Taycan</option>
+          <option value="A4 B9">A4 B9</option>
+          <option value="A6 C8">A6 C8</option>
+          <option value="Q5 2024">Q5 2024</option>
+          <option value="Q7 2024">Q7 2024</option>
+          <option value="e-tron GT">e-tron GT</option>
+          <option value="Golf 8">Golf 8</option>
+          <option value="Passat B8">Passat B8</option>
+          <option value="Touareg 2024">Touareg 2024</option>
+          <option value="Tiguan 2024">Tiguan 2024</option>
+          <option value="ID.4">ID.4</option>
+        </select>
+      </div>
+
+      <div class="filter-group price-group">
+        <div class="filter-label">Цена, ₽</div>
+        <div class="price-row">
+          <input type="text" id="priceMin" placeholder="От">
+          <input type="text" id="priceMax" placeholder="До">
+        </div>
+        </div>
+      </div>
+
+     <button class="filter-action" id="filterButton">Показать 42</button> 
+    </aside>
+
+    <section class="page-content">
+      <!-- ЗАГОЛОВОК КАТАЛОГА -->
+      <div class="catalog-header">
+        <h1>Каталог автомобилей</h1>
+        <p id="carsCount">Найдено 25 предложений от проверенных дилеров</p>
+      </div>
+
+      <!-- СЕТКА КАРТОЧЕК -->
+      <div class="vehicles-grid">
+        <!-- Mercedes-Benz C-Class 2024 -->
+          <div class="cards-grid">
+        <article class="vehicle-card" data-brand="Mercedes-Benz" data-model="C-Class 2024" data-price="5512500" data-condition="new">
+          <img class="card-image" src=image/c-class.jpeg alt="Mercedes-Benz C-Class 2024">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Mercedes-Benz C-Class 2024</div>
+                <div class="card-spec">Мощность: 190 кВт (258 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 400 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">5 512 500 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mercedes-Benz E-Class 2024 -->
+  
+        <article class="vehicle-card" data-brand="Mercedes-Benz" data-model="E-Class 2024" data-price="7350000" data-condition="new">
+          <img class="card-image" src=image/e-class.jpeg alt="Mercedes-Benz E-Class 2024">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Mercedes-Benz E-Class 2024</div>
+                <div class="card-spec">Мощность: 230 кВт (313 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 550 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">7 350 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mercedes-Benz S-Class 2024 -->
+        <article class="vehicle-card" data-brand="Mercedes-Benz" data-model="S-Class 2024" data-price="14175000" data-condition="used">
+          <img class="card-image" src=image/s-class.jpeg alt="Mercedes-Benz S-Class 2024">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Mercedes-Benz S-Class 2024</div>
+                <div class="card-spec">Мощность: 320 кВт (435 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 700 Нм при 6000 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">14 175 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mercedes-Benz GLC 2024 -->
+        <article class="vehicle-card" data-brand="Mercedes-Benz" data-model="GLC 2024" data-price="6825000" data-condition="new">
+          <img class="card-image" src=image/glc.jpeg>
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Mercedes-Benz GLC 2024</div>
+                <div class="card-spec">Мощность: 190 кВт (258 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 400 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">6 825 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mercedes-Benz GLE 2024 -->
+        <article class="vehicle-card" data-brand="Mercedes-Benz" data-model="GLE 2024" data-price="8925000" data-condition="used">
+          <img class="card-image" src=image/gle.jpeg alt="Mercedes-Benz GLE 2024">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Mercedes-Benz GLE 2024</div>
+                <div class="card-spec">Мощность: 270 кВт (367 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 500 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">8 925 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- BMW 3 Series G20 -->
+        <article class="vehicle-card" data-brand="BMW" data-model="3 Series G20" data-price="5250000" data-condition="new">
+          <img class="card-image" src=image/bmw3.jpeg alt="BMW 3 Series G20">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">BMW 3 Series G20</div>
+                <div class="card-spec">Мощность: 190 кВт (258 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 400 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">5 250 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- BMW 5 Series G60 -->
+        <article class="vehicle-card" data-brand="BMW" data-model="5 Series G60" data-price="8137500" data-condition="new">
+          <img class="card-image" src=image/bmw5.jpeg alt="BMW 5 Series G60">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">BMW 5 Series G60</div>
+                <div class="card-spec">Мощность: 250 кВт (340 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 500 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">8 137 500 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- BMW X3 G01 -->
+        <article class="vehicle-card" data-brand="BMW" data-model="X3 G01" data-price="6300000" data-condition="new">
+          <img class="card-image" src=image/bmwx3.jpeg alt="BMW X3 G01">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">BMW X3 G01</div>
+                <div class="card-spec">Мощность: 185 кВт (252 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 350 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">6 300 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- BMW X5 G05 -->
+        <article class="vehicle-card" data-brand="BMW" data-model="X5 G05" data-price="9712500" data-condition="used">
+          <img class="card-image" src=image/bmwx5.jpeg alt="BMW X5  G05">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">BMW X5 G05</div>
+                <div class="card-spec">Мощность: 280 кВт (381 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 600 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">9 712 500 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- BMW X7 G07 -->
+        <article class="vehicle-card" data-brand="BMW" data-model="X7 G07" data-price="11550000" data-condition="used">
+          <img class="card-image" src=image/bmwx7.jpeg alt="BMW X7 G07">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">BMW X7 G07</div>
+                <div class="card-spec">Мощность: 280 кВт (381 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 520 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">11 550 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Porsche 911 Carrera -->
+        <article class="vehicle-card" data-brand="Porsche" data-model="911 Carrera" data-price="15750000" data-condition="used">
+          <img class="card-image" src=image/porshe911.jpeg alt="Porsche 911 Carrera">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Porsche 911 Carrera</div>
+                <div class="card-spec">Мощность: 283 кВт (385 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 450 Нм при 7500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">15 750 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Porsche Cayenne 2024 -->
+        <article class="vehicle-card" data-brand="Porsche" data-model="Cayenne 2024" data-price="11287500" data-condition="used">
+          <img class="card-image" src=image/cayenne.jpeg alt="Porsche Cayenne 2024">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Porsche Cayenne 2024</div>
+                <div class="card-spec">Мощность: 260 кВт (353 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 500 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">11 287 500 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Porsche Macan 2024 -->
+        <article class="vehicle-card" data-brand="Porsche" data-model="Macan 2024" data-price="8137500" data-condition="new">
+          <img class="card-image" src=image/macan.jpeg alt="Porsche Macan 2024">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Porsche Macan 2024</div>
+                <div class="card-spec">Мощность: 195 кВт (265 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 400 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">8 137 500 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Porsche Panamera -->
+        <article class="vehicle-card" data-brand="Porsche" data-model="Panamera" data-price="12075000" data-condition="used">
+          <img class="card-image" src=image/panamera.jpeg alt="Porsche Panamera">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Porsche Panamera</div>
+                <div class="card-spec">Мощность: 243 кВт (330 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 450 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">12 075 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Porsche Taycan -->
+        <article class="vehicle-card" data-brand="Porsche" data-model="Taycan" data-price="13650000" data-condition="used">
+          <img class="card-image" src=image/taycan.jpeg alt="Porsche Taycan">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Porsche Taycan</div>
+                <div class="card-spec">Мощность: 300 кВт (408 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 650 Нм при 16000 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">13 650 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Audi A4 B9 -->
+        <article class="vehicle-card" data-brand="Audi" data-model="A4 B9" data-price="4987500" data-condition="new">
+          <img class="card-image" src=image/a4.jpeg alt="Audi A4 B9">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Audi A4 B9</div>
+                <div class="card-spec">Мощность: 150 кВт (204 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 320 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">4 987 500 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Audi A6 C8 -->
+        <article class="vehicle-card" data-brand="Audi" data-model="A6 C8" data-price="6825000" data-condition="new">
+          <img class="card-image" src=image/a6.jpeg alt="Audi A6 C8">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Audi A6 C8</div>
+                <div class="card-spec">Мощность: 180 кВт (245 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 370 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">6 825 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Audi Q5 2024 -->
+        <article class="vehicle-card" data-brand="Audi" data-model="Q5 2024" data-price="6300000" data-condition="new">
+          <img class="card-image" src=image/q5.jpeg alt="Audi Q5 2024">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Audi Q5 2024</div>
+                <div class="card-spec">Мощность: 195 кВт (265 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 370 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">6 300 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Audi Q7 2024 -->
+        <article class="vehicle-card" data-brand="Audi" data-model="Q7 2024" data-price="8925000" data-condition="used">
+          <img class="card-image" src=image/q7.jpeg alt="Audi Q7 2024">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Audi Q7 2024</div>
+                <div class="card-spec">Мощность: 250 кВт (340 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 500 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">8 925 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Audi e-tron GT -->
+        <article class="vehicle-card" data-brand="Audi" data-model="e-tron GT" data-price="14175000" data-condition="used">
+          <img class="card-image" src=image/e-tron.jpeg alt="Audi e-tron GT">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Audi e-tron GT</div>
+                <div class="card-spec">Мощность: 350 кВт (476 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 630 Нм при 16000 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">14 175 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Volkswagen Golf 8 -->
+        <article class="vehicle-card" data-brand="Volkswagen" data-model="Golf 8" data-price="3150000" data-condition="new">
+          <img class="card-image" src=image/golf.jpeg alt="Volkswagen Golf 8">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Volkswagen Golf 8</div>
+                <div class="card-spec">Мощность: 110 кВт (150 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 250 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">3 150 000 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Volkswagen Passat B8 -->
+        <article class="vehicle-card" data-brand="Volkswagen" data-model="Passat B8" data-price="3937500" data-condition="new">
+          <img class="card-image" src=image/passat.jpeg alt="Volkswagen Passat B8">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Volkswagen Passat B8</div>
+                <div class="card-spec">Мощность: 140 кВт (190 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 320 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">3 937 500 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Volkswagen Touareg 2024 -->
+        <article class="vehicle-card" data-brand="Volkswagen" data-model="Touareg 2024" data-price="8137500" data-condition="used">
+          <img class="card-image" src=image/toureg.jpeg alt="Volkswagen Touareg 2024">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Volkswagen Touareg 2024</div>
+                <div class="card-spec">Мощность: 250 кВт (340 л.с.)</div>
+              </div>
+              <span class="tag">Под заказ</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 600 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">8 137 500 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Volkswagen Tiguan 2024 -->
+        <article class="vehicle-card" data-brand="Volkswagen" data-model="Tiguan 2024" data-price="3937500" data-condition="new">
+          <img class="card-image" src=image/tiguan.jpeg alt="Volkswagen Tiguan 2024">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Volkswagen Tiguan 2024</div>
+                <div class="card-spec">Мощность: 110 кВт (150 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 250 Нм при 6500 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">3 937 500 ₽</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Volkswagen ID.4 -->
+        <article class="vehicle-card" data-brand="Volkswagen" data-model="ID.4" data-price="4987500" data-condition="new">
+          <img class="card-image" src=image/id4.jpeg alt="Volkswagen ID.4">
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="card-title">Volkswagen ID.4</div>
+                <div class="card-spec">Мощность: 150 кВт (204 л.с.)</div>
+              </div>
+              <span class="tag">В наличии</span>
+            </div>
+            <div class="card-spec">Крутящий момент: 310 Нм при 16000 об/мин</div>
+            <div class="card-price">
+              <div class="price-label">От</div>
+              <div class="price-value">4 987 500 ₽</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- МОДАЛЬНОЕ ОКНО ДЕТАЛЕЙ АВТОМОБИЛЯ -->
+  <div class="car-modal" id="carModal">
+    <div class="car-modal-overlay" id="carModalOverlay"></div>
+    <div class="car-modal-content">
+      <button type="button" class="car-modal-close" id="carModalClose">×</button>
+      <div class="car-modal-body">
+        <img class="car-modal-image" id="carModalImage" src="" alt="Автомобиль">
+        <div class="car-modal-info">
+          <h2 class="car-modal-title" id="carModalTitle"></h2>
+          <div class="car-modal-specs" id="carModalSpecs"></div>
+          <div class="car-modal-price">
+            <span class="car-modal-price-label">Цена:</span>
+            <span class="car-modal-price-value" id="carModalPrice"></span>
+          </div>
+          <div class="car-modal-status" id="carModalStatus"></div>
+          <button class="car-modal-action">Связаться с дилером</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <div class="footer-copyright">© 2026 ОБНАЛ Авто Все права защищены</div>
+        <div class="footer-founder">
+          Учредитель: Общество с ограниченной ответственностью «ОБНАЛ-Авто»<br>
+          Главный редактор: Кульченков Денис Сергеевич
+        </div>
+      </div>
+      <div class="footer-right">
+        <a href="terms.html">Пользовательское соглашение</a>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a class="social-icon" href="#" title="Наш ВКонтакте">VK</a>
+      <a class="social-icon" href="#" title="Наш Telegram">TG</a>
+    </div>
+  </footer>
+
+  <div class="support-popup" id="supportPopup">
+    <div class="support-popup-header">
+      <span>Поддержка</span>
+      <button type="button" class="support-close" id="supportClose">×</button>
+    </div>
+    <div class="support-popup-body">
+      <textarea id="supportMessage" placeholder="Напишите сообщение..."></textarea>
+      <button type="button" class="support-send" id="supportSend">Отправить</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

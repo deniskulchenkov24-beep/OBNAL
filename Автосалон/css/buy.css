@@ -1,0 +1,442 @@
+/* Buy Page Styles */
+.buy-page {
+    background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+    min-height: 100vh;
+}
+
+.page-main {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1620px;
+    margin: 0 auto;
+}
+
+.page-sidebar {
+    width: 720px;
+    background: #242424;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 30px;
+    padding: 28px;
+}
+
+.filter-tab {
+    flex: 1;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid rgba(203, 9, 168, 0.12);
+    color: #ccc;
+    background: rgba(255, 255, 255, 0.04);
+    transition: all 0.2s ease;
+}
+
+.filter-tab.active,
+.filter-tab:hover {
+    background: white;
+    color: #111;
+    border-color: rgba(155,20,229,0.25);
+}
+
+.filter-group {
+    margin-bottom: 22px;
+}
+
+.filter-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+
+.filter-select {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: #1a1a1a;
+    color: #f5f5f5;
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+.price-group .price-row {
+    display: flex;
+    gap: 14px;
+    margin-top: 14px;
+   
+}
+
+.price-row input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: #1a1a1a;
+    color: #f5f5f5;
+    font-size: 14px;
+    outline: none;
+}
+
+.filter-action {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #9B14E5 0%, #D414E5 100%);
+    border: none;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.filter-action:hover {
+    transform: translateY(-1px);
+}
+
+.page-listing {
+    flex: 1;
+    min-width: 0;
+}
+
+.catalog-header {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.catalog-title {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.catalog-info {
+    color: #bdbdbd;
+    font-size: 15px;
+}
+
+.catalog-badge {
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: rgba(155,20,229,0.12);
+    color: #9B14E5;
+    font-weight: 700;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.vehicle-card {
+    background: #242424;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 30px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(155,20,229,0.35);
+}
+
+.card-image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-body {
+    padding: 22px;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.card-title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card-spec {
+    color: #bdbdbd;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.card-price {
+    margin-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.price-label {
+    color: #999;
+    font-size: 14px;
+}
+
+.price-value {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.tag {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(155,20,229,0.12);
+    color: #9B14E5;
+}
+
+@media (max-width: 1200px) {
+    .page-main {
+        flex-direction: column;
+        padding: 24px;
+    }
+
+    .page-sidebar {
+        width: 100%;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .page-main {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .page-sidebar {
+        width: 100%;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog-title {
+        font-size: 24px;
+    }
+}
+
+/* МОДАЛЬНОЕ ОКНО ДЕТАЛЕЙ АВТОМОБИЛЯ */
+.car-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.car-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.car-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+}
+
+.car-modal-content {
+    position: relative;
+    background: #242424;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.car-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 32px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    z-index: 1001;
+}
+
+.car-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.car-modal-body {
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+}
+
+.car-modal-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 30px;
+    flex-shrink: 0;
+}
+
+.car-modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.car-modal-title {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.car-modal-specs {
+    margin-bottom: 24px;
+}
+
+.car-modal-spec-item {
+    color: #bdbdbd;
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 8px 0;
+}
+
+.car-modal-price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: rgba(155, 20, 229, 0.1);
+    border-radius: 15px;
+}
+
+.car-modal-price-label {
+    color: #999;
+    font-size: 14px;
+}
+
+.car-modal-price-value {
+    color: #9B14E5;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.car-modal-status {
+    margin-bottom: 24px;
+}
+
+.car-modal-tag {
+    display: inline-flex;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    background: rgba(155, 20, 229, 0.12);
+    color: #9B14E5;
+}
+
+.car-modal-action {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #9B14E5 0%, #D414E5 100%);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-top: auto;
+}
+
+.car-modal-action:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .car-modal-body {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 20px;
+    }
+
+    .car-modal-image {
+        width: 100%;
+        height: 240px;
+    }
+
+    .car-modal-title {
+        font-size: 22px;
+    }
+
+    .car-modal-close {
+        top: 15px;
+        right: 15px;
+    }
+
+    .car-modal-content {
+        width: 95%;
+    }
+}

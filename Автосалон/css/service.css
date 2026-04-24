@@ -1,0 +1,218 @@
+/* Service Page Styles */
+/* СТРАНИЦА СЕРВИСА */
+.service-page {
+    background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+    min-height: 100vh;
+}
+
+/* Основное содержимое страницы */
+.service-page-main {
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+/* Боковая панель с услугами */
+.service-sidebar {
+    width: 340px;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+/* Панель с информацией о сервисе */
+.service-panel {
+    background: #ffffff;
+    border-radius: 32px;
+    padding: 22px;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
+}
+
+.service-panel-title {
+    color: #111;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.service-search {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.service-search-input {
+    flex: 1;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    outline: none;
+    font-size: 14px;
+}
+
+.service-search-btn {
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: 1px solid #9B14E5;
+    background: transparent;
+    color: #9B14E5;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.service-list {
+    display: grid;
+    gap: 14px;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: #f8f8f8;
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.service-item:hover,
+.service-item.active {
+    background: #f0ebff;
+    transform: translateY(-1px);
+}
+
+.service-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 16px;
+    background: #e9d7ff;
+    font-size: 18px;
+}
+
+.service-listing {
+    flex: 1;
+    min-width: 0;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 34px;
+    padding: 36px;
+    min-height: 520px;
+    color: white;
+}
+
+.service-card-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 28px;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-features li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 18px;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.service-features li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #9B14E5;
+    font-weight: 900;
+}
+
+.service-page-main .catalog-header,
+.service-page-main .filter-tabs {
+    display: none;
+}
+
+.service-page .search-btn {
+    background: #f8f8f8;
+    color: #111;
+}
+
+.service-page .search-input {
+    color: #111;
+}
+
+.service-page .nav-menu {
+    background: rgba(255,255,255,0.95);
+}
+
+.service-page .nav-links a {
+    color: #111;
+}
+
+@media (max-width: 1200px) {
+    .service-page-main {
+        flex-direction: column;
+        padding: 24px;
+    }
+
+    .service-sidebar {
+        width: 100%;
+    }
+
+    .service-panel {
+        margin-bottom: 24px;
+    }
+
+    .service-card {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-page-main {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .service-sidebar {
+        width: 100%;
+    }
+
+    .service-panel {
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+
+    .service-panel-title {
+        font-size: 22px;
+    }
+
+    .service-card {
+        padding: 24px;
+    }
+
+    .service-card-title {
+        font-size: 24px;
+    }
+
+    .service-features li {
+        font-size: 14px;
+        padding-left: 24px;
+    }
+}
