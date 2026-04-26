@@ -80,13 +80,13 @@
       <div class="service-card">
         <div id="serviceCardTitle" class="service-card-title">Автосервис</div>
         <ul id="serviceFeatures" class="service-features">
-          <li>Техническое обслуживание</li>
-          <li>Шиномонтажные работы</li>
-          <li>Замена жидкостей</li>
-          <li>Автостекла и зеркала</li>
-          <li>Двигатель</li>
+          <li class="service-feature-item" data-feature="Техническое обслуживание">Техническое обслуживание</li>
+          <li class="service-feature-item" data-feature="Шиномонтажные работы">Шиномонтажные работы</li>
+          <li class="service-feature-item" data-feature="Замена жидкостей">Замена жидкостей</li>
+          <li class="service-feature-item" data-feature="Автостекла и зеркала">Автостекла и зеркала</li>
+          <li class="service-feature-item" data-feature="Работа с двигателем">Работа с двигателем</li>
         </ul>
-      </div>
+              </div>
     </section>
   </main>
 
@@ -143,6 +143,76 @@
       </form>
     </div>
   </div>
+
+  <!-- Модальное окно записи на услугу -->
+  <div class="booking-modal-overlay" id="bookingModalOverlay">
+    <div class="booking-modal">
+      <button type="button" class="booking-modal-close" id="bookingModalClose">×</button>
+      
+      <div class="booking-modal-header">
+        <div class="booking-modal-logo">📅</div>
+        <h2 class="booking-modal-title">Запись на услугу</h2>
+        <div class="booking-service-name" id="bookingServiceName">Автосервис</div>
+      </div>
+      
+      <form class="booking-form" id="bookingForm">
+        <div class="form-group">
+          <label for="bookingDate">Дата записи</label>
+          <input type="date" id="bookingDate" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bookingTime">Время записи</label>
+          <select id="bookingTime" class="form-input" required>
+            <option value="">Выберите время</option>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+            <option value="18:00">18:00</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="bookingPhone">Номер телефона</label>
+          <input type="tel" id="bookingPhone" class="form-input" placeholder="+7XXXXXXXXXX" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bookingComment">Комментарий (необязательно)</label>
+          <textarea id="bookingComment" class="form-input" rows="3" placeholder="Дополнительная информация..."></textarea>
+        </div>
+
+        <button type="submit" class="booking-submit-btn">Записаться</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модальное окно "Вы записаны" -->
+  <div class="confirmation-modal-overlay" id="confirmationModalOverlay">
+    <div class="confirmation-modal">
+      <button type="button" class="confirmation-modal-close" id="confirmationModalClose">×</button>
+      
+      <div class="confirmation-modal-header">
+        <div class="confirmation-icon">✅</div>
+        <h2 class="confirmation-modal-title">Вы записаны!</h2>
+      </div>
+      
+      <div class="confirmation-modal-body">
+        <p class="confirmation-message">Спасибо за вашу запись. Мы свяжемся с вами в ближайшее время для подтверждения деталей.</p>
+        <div class="confirmation-details" id="confirmationDetails">
+          <!-- Детали записи будут добавлены через JavaScript -->
+        </div>
+        <button type="button" class="confirmation-ok-btn" id="confirmationModalOk">ОК</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

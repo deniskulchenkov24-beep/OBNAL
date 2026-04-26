@@ -52,6 +52,9 @@ const serviceData = {
     }
 };
 
+// Делаем данные доступными глобально
+window.serviceData = serviceData;
+
 const pageSearchMap = [
     { keywords: ['купить', 'автомобиль', 'авто', 'машину', 'машина', 'модель', 'цена', 'кредит', 'finance', 'платеж', 'mercedes', 'bmw', 'porsche', 'audi'], url: 'buy.html' },
     { keywords: ['продать', 'продажа', 'выкуп', 'госномер', 'пробег', 'адрес', 'номер', 'заявка', 'связи'], url: 'sell.html' },
@@ -93,7 +96,23 @@ function renderServiceContent(key) {
     if (!content || !serviceCardTitle || !serviceFeaturesList) return;
 
     serviceCardTitle.textContent = content.title;
-    serviceFeaturesList.innerHTML = content.features.map(feature => `<li>${feature}</li>`).join('');
+    serviceFeaturesList.innerHTML = content.features.map(feature => 
+        `<li class="service-feature-item" data-feature="${feature}">${feature}</li>`
+    ).join('');
+    
+    // Добавляем обработчики кликов для новых элементов услуг
+    setupFeatureItemClicks();
+}
+
+function setupFeatureItemClicks() {
+    const featureItems = document.querySelectorAll('.service-feature-item');
+    featureItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const featureName = item.dataset.feature;
+            const serviceName = document.getElementById('serviceCardTitle')?.textContent || 'Услуга';
+            openFeatureBookingModal(serviceName, featureName);
+        });
+    });
 }
 
 function setActiveServiceItem(button) {
@@ -354,6 +373,7 @@ if (isBuyPage) {
 
 if (isServicePage) {
     setupServicePage();
+    setupFeatureItemClicks();
 }
 
 setupSupportPopup();
@@ -599,6 +619,249 @@ if (isBuyPage) {
     setupCarModal();
 }
 
+//МОДАЛЬНОЕ ОКНО ЗАПИСИ НА УСЛУГУ
+function openBookingModal() {
+    const bookingModalOverlay = document.getElementById('bookingModalOverlay');
+    const bookingServiceName = document.getElementById('bookingServiceName');
+    
+    const activeService = document.querySelector('.service-item.active');
+    if (activeService && bookingServiceName) {
+        const serviceKey = activeService.dataset.service || 'autoshop';
+        const serviceData = window.serviceData?.[serviceKey];
+        bookingServiceName.textContent = serviceData?.title || 'Автосервис';
+    }
+    
+    if (bookingModalOverlay) {
+        bookingModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function openFeatureBookingModal(serviceName, featureName) {
+    const bookingModalOverlay = document.getElementById('bookingModalOverlay');
+    const bookingServiceName = document.getElementById('bookingServiceName');
+    
+    if (bookingServiceName) {
+        bookingServiceName.textContent = `${serviceName}: ${featureName}`;
+    }
+    
+    if (bookingModalOverlay) {
+        bookingModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function setupConfirmationModal() {
+    const confirmationModalOverlay = document.getElementById('confirmationModalOverlay');
+    const confirmationModalClose = document.getElementById('confirmationModalClose');
+    const confirmationModalOk = document.getElementById('confirmationModalOk');
+    const confirmationDetails = document.getElementById('confirmationDetails');
+
+    // Открытие модального окна подтверждения
+    function openConfirmationModal(bookingData) {
+        if (confirmationDetails) {
+            confirmationDetails.innerHTML = `
+                <div><strong>Услуга:</strong> ${bookingData.service}</div>
+                <div><strong>Дата:</strong> ${bookingData.date}</div>
+                <div><strong>Время:</strong> ${bookingData.time}</div>
+                <div><strong>Телефон:</strong> ${bookingData.phone}</div>
+                ${bookingData.comment ? `<div><strong>Комментарий:</strong> ${bookingData.comment}</div>` : ''}
+            `;
+        }
+        
+        if (confirmationModalOverlay) {
+            confirmationModalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    // Закрытие модального окна подтверждения
+    function closeConfirmationModal() {
+        if (confirmationModalOverlay) {
+            confirmationModalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Обработчики закрытия
+    if (confirmationModalClose) {
+        confirmationModalClose.addEventListener('click', closeConfirmationModal);
+    }
+
+    if (confirmationModalOk) {
+        confirmationModalOk.addEventListener('click', closeConfirmationModal);
+    }
+
+    if (confirmationModalOverlay) {
+        confirmationModalOverlay.addEventListener('click', (e) => {
+            if (e.target === confirmationModalOverlay) {
+                closeConfirmationModal();
+            }
+        });
+    }
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && confirmationModalOverlay && confirmationModalOverlay.classList.contains('active')) {
+            closeConfirmationModal();
+        }
+    });
+
+    // Делаем функцию доступной глобально
+    window.openConfirmationModal = openConfirmationModal;
+}
+
+function setupBookingModal() {
+    const bookingModalOverlay = document.getElementById('bookingModalOverlay');
+    const bookingModalClose = document.getElementById('bookingModalClose');
+    const bookingForm = document.getElementById('bookingForm');
+    const bookingServiceName = document.getElementById('bookingServiceName');
+    const bookingDate = document.getElementById('bookingDate');
+    const bookingTime = document.getElementById('bookingTime');
+    const bookingPhone = document.getElementById('bookingPhone');
+    const bookingComment = document.getElementById('bookingComment');
+
+    // Устанавливаем минимальную дату - сегодня
+    if (bookingDate) {
+        const today = new Date().toISOString().split('T')[0];
+        bookingDate.min = today;
+    }
+
+    // Закрытие модального окна
+    function closeBookingModal() {
+        if (bookingModalOverlay) {
+            bookingModalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            if (bookingForm) {
+                bookingForm.reset();
+            }
+        }
+    }
+
+    // Валидация телефона
+    function validatePhone(phone) {
+        const phoneRegex = /^\+7\d{10}$/;
+        return phoneRegex.test(phone);
+    }
+
+    // Валидация даты (не в прошлом)
+    function validateDate(date) {
+        const selectedDate = new Date(date);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return selectedDate >= today;
+    }
+
+    
+    // Обработчики закрытия
+    if (bookingModalClose) {
+        bookingModalClose.addEventListener('click', closeBookingModal);
+    }
+
+    if (bookingModalOverlay) {
+        bookingModalOverlay.addEventListener('click', (e) => {
+            if (e.target === bookingModalOverlay) {
+                closeBookingModal();
+            }
+        });
+    }
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && bookingModalOverlay && bookingModalOverlay.classList.contains('active')) {
+            closeBookingModal();
+        }
+    });
+
+    // Обработчик отправки формы
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const date = bookingDate?.value.trim();
+            const time = bookingTime?.value.trim();
+            const phone = bookingPhone?.value.trim();
+            const comment = bookingComment?.value.trim();
+
+            // Валидация
+            if (!date) {
+                alert('Пожалуйста, выберите дату записи.');
+                bookingDate?.focus();
+                return;
+            }
+
+            if (!validateDate(date)) {
+                alert('Дата записи не может быть в прошлом.');
+                bookingDate?.focus();
+                return;
+            }
+
+            if (!time) {
+                alert('Пожалуйста, выберите время записи.');
+                bookingTime?.focus();
+                return;
+            }
+
+            if (!phone) {
+                alert('Пожалуйста, введите номер телефона.');
+                bookingPhone?.focus();
+                return;
+            }
+
+            if (!validatePhone(phone)) {
+                alert('Номер телефона должен быть в формате: +7XXXXXXXXXX\nПример: +79991234567');
+                bookingPhone?.focus();
+                return;
+            }
+
+            // Сохранение заявки
+            const bookingData = {
+                service: bookingServiceName?.textContent || 'Автосервис',
+                date: date,
+                time: time,
+                phone: phone,
+                comment: comment,
+                timestamp: new Date().toISOString()
+            };
+
+            // Сохраняем в localStorage для демонстрации
+            const existingBookings = JSON.parse(localStorage.getItem('serviceBookings') || '[]');
+            existingBookings.push(bookingData);
+            localStorage.setItem('serviceBookings', JSON.stringify(existingBookings));
+
+            console.log('Запись на услугу:', bookingData);
+
+            // Закрываем модальное окно записи
+            closeBookingModal();
+
+            // Показываем модальное окно подтверждения
+            if (window.openConfirmationModal) {
+                window.openConfirmationModal(bookingData);
+            }
+        });
+    }
+
+    // Форматирование телефона при вводе
+    if (bookingPhone) {
+        bookingPhone.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0 && !e.target.value.startsWith('+7')) {
+                value = '7' + value;
+            }
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+            if (value.length > 0) {
+                e.target.value = '+' + value;
+            }
+        });
+    }
+}
+
 //ИНИЦИАЛИЗАЦИЯ ВСЕХ ФУНКЦИЙ
 setupSellForm();
 setupLoginModal();
+if (isServicePage) {
+    setupBookingModal();
+    setupConfirmationModal();
+}
